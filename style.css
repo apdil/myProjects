@@ -6,26 +6,69 @@
     flex-direction: row;
 }
 
+.column{
+    flex-direction: column;
+}
+
+.jsContentCenter{
+    justify-content: center;
+}
+
+.jsContentEnd{
+    justify-content: flex-end;
+}
+
+.alignContent{
+    align-content: flex-end;
+}
+
+.alignItems{
+    align-items: flex-end;
+}
+
 .fixed{
     position: fixed;
 }
 
-.JsContentEnd{
-    justify-content: flex-end;
+.absolute{
+    position: absolute;
 }
 
 .width100{
     width: 100%;
 }
 
-.nav{
-    height: 60vh;
+.height100{
+    height: 100vh;
 }
 
 .back{
     background: red;
 }
 
-html{
-    height: 300vh;
+body{
+    margin:0;
+    overflow-y: hidden;
+}
+
+nav{
+    z-index: 1;
+}
+
+header{
+    z-index: 2;
+}
+
+section{
+    z-index: 3;
+}
+
+ img{
+    transform: rotate(7deg);
+    height: 20em;
+    width: 35em;
+} 
+
+.img{
+    z-index: 2;
 }
