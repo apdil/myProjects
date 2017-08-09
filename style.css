@@ -63,12 +63,18 @@ section{
     z-index: 3;
 }
 
- img{
-    transform: rotate(7deg);
+img{
+    transform: rotateY(-1deg) rotateX(1deg);
     height: 20em;
     width: 35em;
+    position: absolute;
 } 
 
-.img{
+.imgDiv{
     z-index: 2;
+    height: 20em;
+    width: 35em;
+    align-self: center;
+    position: relative;
+    perspective: 50px;
 }

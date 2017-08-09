@@ -38,7 +38,7 @@ $dossiers = scandir('projects');
                     if($file === 'presentation.json'){ // user json for acces object
                         $projectObj = json_decode(file_get_contents('projects/'. $dossier. '/' .$file));?>
         <!-- use link with ancre -->
-        <section id='<?php echo $projectObj->name; ?>' class='height100'>
+        <section id='<?php echo $projectObj->name; ?>' class='height100 flex column'>
             <div class='flex'>
                 <h2><?php echo $projectObj->name; ?></h2><!-- name of the section -->
                 <div> <!-- display tools -->
@@ -52,7 +52,10 @@ $dossiers = scandir('projects');
                 <h5>Duree de la formation à la création:</h5>
                 <p><?php echo $projectObj->trainingTime; ?></p>
             </div>
-            <div class='img'><img src='projects/<?php echo $dossier ?>/img.png'></div>
+            <div class='imgDiv'>
+                <img src='projects/<?php echo $dossier ?>/img.png'>
+            </div>
+            <div></div>
         </section>
                 <?php } } } ?>
     </main>
