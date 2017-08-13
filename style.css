@@ -1,80 +1,176 @@
-.flex{
-    display: flex;
+body{
+    overflow-y: hidden;
+    margin: 0;
 }
 
-.row{
-    flex-direction: row;
+header{
+    width: 33%;
+    left: 100%;
+    transform: translate(-100%, 0%);
+}
+
+section{
+    height: 100vh;
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    margin-top: 1em;
+}
+
+.flex{
+    display: flex;
 }
 
 .column{
     flex-direction: column;
 }
 
-.jsContentCenter{
-    justify-content: center;
+.jsContentSA{
+    justify-content: space-around;
 }
 
-.jsContentEnd{
-    justify-content: flex-end;
-}
-
-.alignContent{
-    align-content: flex-end;
-}
-
-.alignItems{
+.alignItemsEnd{
     align-items: flex-end;
+}
+
+.alignItemsC{
+    align-items: center;
 }
 
 .fixed{
     position: fixed;
 }
 
+.relative{
+    position: relative;
+}
+
 .absolute{
     position: absolute;
 }
 
-.width100{
+.txtCenter{
+    text-align: center;
+}
+
+.presentProject{
+    height: 45vh;
+    top: -10%;
+}
+
+.bande{
+    height: 45vh;
     width: 100%;
+    background-color: red;
+    opacity: 0.9;
+    z-index: 99;
 }
 
-.height100{
-    height: 100vh;
-}
-
-.back{
-    background: red;
-}
-
-body{
-    margin:0;
-    overflow-y: hidden;
-}
-
-nav{
-    z-index: 1;
-}
-
-header{
-    z-index: 2;
-}
-
-section{
-    z-index: 3;
-}
-
-img{
+.image{
     transform: rotateY(-1deg) rotateX(1deg);
-    height: 20em;
-    width: 35em;
+    height: 55vh;
+    width: 45%; 
     position: absolute;
+    top: -15%;
+    left: 10%;
+    box-shadow: 10px 6px 100px;
 } 
 
-.imgDiv{
-    z-index: 2;
-    height: 20em;
-    width: 35em;
-    align-self: center;
-    position: relative;
+.imgProject{
+    height: 45vh;
+    width: 100%;
     perspective: 50px;
+}
+
+ .txtProject{
+    z-index: 101;
+    width: 25%;
+    top: 55%;
+    left: 65%;
+} 
+
+/* .txtProject p {
+    width: 30%;
+} */
+
+.toolsProject{
+    left: 65%;
+    color: white;
+}
+
+.title1, p, h2, h3, li{
+    font-family: 'Orbitron', sans-serif;    
+}
+
+.title1{
+    font-size: 3.5em;
+    margin-left: 1em;
+}
+
+#scrollBot{
+    height: 4em;
+    width: 4.5em;
+    top: 0%;
+}
+
+#scrollTop{
+    height: 4em;
+    width: 4.5em;
+    top: 100%;
+    transform: translate(0%, -100%);
+}
+
+#simplonImg{
+    height: 2em;
+    width: 6em;
+}
+
+.ancre{
+    font-size: 1em;
+    text-align: center;
+    margin-top: 5.5em;
+    transform: rotate(-90deg);
+    color:black;
+
+    /* font-family: 'Architects Daughter', cursive; */
+    font-family: 'Orbitron', sans-serif;    
+}
+
+#projects{
+    left: -2%;
+    height: 100vh;
+    /* transform: translate(-100%, -35%); */
+    z-index: 100;
+    overflow: hidden;
+    }
+
+.bandeBright{
+    position: absolute;
+    height: 100%;
+    width: 30%;
+    left: 100%;
+    transform: translate(-100%, 0%);
+    filter: brightness(150%);
+    mix-blend-mode: color-burn;
+    background-color: lightcoral;
+}
+
+/* .test{
+    position: absolute;
+    height: 10em;
+    width: 10em;
+    left: 10%;
+    top: 1%;
+    z-index: 100;
+    mix-blend-mode: difference;
+    background-color: black;
+} */
+
+#linkBar{
+    height: 100vh;
+    width: 4.5em;
 }
