@@ -4,13 +4,16 @@ body{
 }
 
 header{
-    width: 33%;
+    width: 50%;
     left: 100%;
+    top: 1em;
     transform: translate(-100%, 0%);
+    z-index: 110;
 }
 
 section{
     height: 100vh;
+    transition: 2s;
 }
 
 a{
@@ -86,16 +89,12 @@ li{
     perspective: 50px;
 }
 
- .txtProject{
+.txtProject{
     z-index: 101;
     width: 25%;
     top: 55%;
     left: 65%;
 } 
-
-/* .txtProject p {
-    width: 30%;
-} */
 
 .toolsProject{
     left: 65%;
@@ -125,8 +124,8 @@ li{
 }
 
 #simplonImg{
-    height: 2em;
-    width: 6em;
+    height: 3em;
+    width: 8em;
 }
 
 .ancre{
@@ -159,18 +158,56 @@ li{
     background-color: lightcoral;
 }
 
-/* .test{
-    position: absolute;
-    height: 10em;
-    width: 10em;
-    left: 10%;
-    top: 1%;
-    z-index: 100;
-    mix-blend-mode: difference;
-    background-color: black;
-} */
-
 #linkBar{
     height: 100vh;
     width: 4.5em;
 }
+
+.imgSize:before{
+    font-size: 3em;
+}
+
+.fa-linkedin-square:before{
+    color:#0077B5;
+}
+
+.fa-git-square:before{
+    color:#24292E;
+}
+
+.fa-id-card-o:before{
+    color:#E40046;
+}
+
+.fa-graduation-cap:before{
+    color: darkgray;
+}
+
+.animate{
+    animation-name: present;
+    animation-duration: 1.5s;
+    z-index: 120;
+}
+
+#animationOnClick{
+    display: none;
+}
+
+/* @keyframes present{
+    0%{
+        top: 0%;
+        height: 100vh;
+        width: 100%;
+        background-color: red;
+    }
+    30%{
+        top: 0%;
+        height: 100vh;
+    }
+    100%{
+        top:40%;
+        height: 40vh;
+        width: 100%;
+        background-color: blue;
+    }
+}  */

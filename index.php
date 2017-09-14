@@ -13,11 +13,15 @@ $dossiers = scandir('projects');
     <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
+<link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
 
     <title>Explore</title>
 </head>
 
 <body>
+    <div id='animationOnClick' class='fixed'>
+    <h2>POmme</h2>
+    </div>
     <!-- display link projects with ancre -->
     <nav id='linkBar' class='absolute'>
         <div id='projects' class='fixed flex column'>
@@ -34,9 +38,12 @@ $dossiers = scandir('projects');
         </div>
     </nav>
 
-    <header class='flex jsContentSA fixed'>
-        <h2><a href='#'>Je suis ..</a></h2> 
-        <h2><a href='https://simplon.co/'><img id='simplonImg' src='img/logo-simplon.png'></a></h2>
+    <header class='flex jsContentSA alignItemsC fixed'>
+        <a href='https://www.linkedin.com/in/apdil-aydinalp-135881149/'><i class="fa fa-linkedin-square imgSize" aria-hidden="true"></i>
+        <a href='https://github.com/apdil'><i class="fa fa-git-square imgSize" aria-hidden="true"></i></a>
+        <a href='#'><i class="fa fa-graduation-cap imgSize" aria-hidden="true"></i></a>
+        <a href='#'><i class="fa fa-id-card-o imgSize" aria-hidden="true"></i></a>
+        <a href='https://simplon.co/'><img id='simplonImg' src='img/logo-simplon.png'></a>
     </header> 
     <main>
                 <?php foreach($dossiers as $dossier){ // get dir of projects
@@ -77,6 +84,7 @@ $dossiers = scandir('projects');
     <script src='script/title1.js'></script>
     <script src='script/ribbonColor.js'></script>
     <script src='script/scroll.js'></script>
+    <script src='script/animClickLink.js'></script>
 </body>
 
 </html>
