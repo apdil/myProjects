@@ -14,13 +14,14 @@ $dossiers = scandir('projects');
 <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
 <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel="icon" type="image/ico" href="img/favicon.ico" />
 
     <title>Explore</title>
 </head>
 
 <body>
     <div id='animationOnClick' class='fixed'>
-    <h2>POmme</h2>
+        <h2 id='titleAnim'></h2>
     </div>
     <!-- display link projects with ancre -->
     <nav id='linkBar' class='absolute'>

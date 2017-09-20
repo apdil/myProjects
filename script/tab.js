@@ -7,3 +7,10 @@ let yellow = new Color(242, 220, 40);
 let green = new Color(71, 185, 28);
 
 tabColor.push(blue, pink, orange, green, yellow);
+
+let tabAncre = [];
+
+
+document.querySelectorAll('.ancre').forEach(function(ancre){
+    tabAncre.push(ancre.hash);
+})
