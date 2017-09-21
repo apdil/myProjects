@@ -4,82 +4,49 @@ let ancre = document.querySelectorAll('.ancre');
 ancre.forEach(function (link, item) {
     link.addEventListener('click', function (e) {
 
+        //TRANSLATE SECTION ON TOP AFTER CLICK ON LINK
+
         //return element section Active
         let section = sectionActive(window.location.href);
-        //create clone element for animation
+        //create clone element for transition
         let animSection = section.cloneNode(true);
         document.body.querySelector('main').appendChild(animSection);
+        //initialize a class of new section who used for transition
         animSection.classList.add('sectionClone');
 
+        //activation transition
         setTimeout(function () {
-            animSection.classList.add('sectionTransition');
-            animSection.addEventListener('transitionend', function () {
-                document.body.querySelector('main').removeChild(animSection);
-            });
+            sectionActiveTransition(animSection);
         }, 0.01)
 
 
-        // title animation:
+
+        // TITLE OF PROJECT ON TRANSITION
+
         let titleAnim = document.querySelector('#titleAnim');
+
+        // get name of project in link property
         titleAnim.textContent = link.innerHTML
+        //initialize a class for title
         titleAnim.classList = 'titleTransition';
         setTimeout(function () {
-            titleAnim.classList = 'titleTransition2';
-            titleAnim.addEventListener('transitionend', function () {
-                if (document.querySelector('.titleTransition2') === null) {
-                    return;
-                }
-                titleAnim.innerHTML = "";
-            })
+            titleTransition(titleAnim);
         }, 0.01)
 
 
+        
+        // RIBBON TRANSITION WITH 3 STEP (3 TANSITION)
 
-        let animation = document.querySelector('#animationOnClick');
+        let ribbon = document.querySelector('#animationOnClick');
 
-        animation.classList = 'transition fixed';
-        animation.style.display = 'block';
+        //initialize a class for ribbon
+        ribbon.classList = 'transition fixed';
+        ribbon.style.display = 'block';
 
         setTimeout(function () {
-            animation.classList = 'transition2 fixed';
-            animation.style.backgroundColor = 'rgb(' + tabColor[item].color1 + ','
-                + tabColor[item].color2 + ',' + tabColor[item].color3 + ')';
-            animation.addEventListener('transitionend', function () {
-                setTimeout(function () {
-                    animation.classList = 'transition3 fixed';
-                    animation.style.backgroundColor = 'rgb(' + tabColor[item].color1
-                        + ',' + tabColor[item].color2 + ',' + tabColor[item].color3 + ')';
-                    // a revoir erreur sur le nombre de fois ou le code est executer
-                    animation.addEventListener('transitionend', function () {
-                        if (document.querySelector('.transition3') === null) {
-                            return;
-                        }
-                        document.querySelector('.transition3').style.display = 'none';
-                    });
-                }, 0.01)
-            })
+            ribbonTransition(ribbon, item);
         }, 0.01)
 
-
-        //     let styleTab = document.styleSheets;
-
-        //     styleTab[0].insertRule('@keyframes present {' + 
-        //         '0% {top: 100%; height: 100vh; width: 100%;background-color:rgb(' + tabColor[item].color1 +
-        //  ',' + tabColor[item].color2 + ',' + tabColor[item].color3 + ');}' +
-        //         '60% {top: 0%; height: 100vh; width: 100%;}' +
-        //         '100% {top: 40%; height: 40vh; width: 100%;background-color:rgb(' + tabColor[item].color1 +
-        //  ',' + tabColor[item].color2 + ',' + tabColor[item].color3 + ');}', styleTab[0].cssRules.length);
-        //     console.log(styleTab[0].cssRules[36].name);
-
-
-        //     document.querySelector('#animationOnClick').style.display = 'block';
-        //     document.querySelector('#animationOnClick').classList = 'fixed animate';
-
-        //     document.querySelector('.animate').addEventListener('animationend', function () {
-        //         document.querySelector('#animationOnClick').classList.remove('animate');
-        //         document.querySelector('#animationOnClick').style.display = 'none';
-        //         styleTab[0].deleteRule(styleTab[0].cssRules.length - 1);
-        //     });
     });
 });
 
@@ -97,4 +64,58 @@ function ancreActive(url) {
             return ancre;
         }
     }
+}
+
+function sectionActiveTransition(element) {
+    element.classList.add('sectionTransition');
+    element.addEventListener('transitionend', function () {
+        //delete section after transition
+        document.body.querySelector('main').removeChild(element);
+    });
+}
+
+function titleTransition(element) {
+    element.classList = 'titleTransition2';
+    let i = 0;
+    element.addEventListener('transitionend', function () {
+        // condition for run transitionend only one time
+        if (i === 0) {
+            if (document.querySelector('.titleTransition2') === null) {
+                return;
+            }
+            // title disapears
+            element.innerHTML = "";
+            i++;
+        }
+    })
+}
+
+function ribbonTransition(element, index) {
+    element.classList = 'transition2 fixed';
+    //set a backgroundColor to color of active section
+    element.style.backgroundColor = 'rgb(' + tabColor[index].color1 + ','
+        + tabColor[index].color2 + ',' + tabColor[index].color3 + ')';
+
+    element.addEventListener('transitionend', function () {
+        let i = 0;
+        // condition for run transitionend only one time
+        if (i === 0) {
+            setTimeout(function () {
+                element.classList = 'transition3 fixed';
+
+                // a revoir erreur sur le nombre de fois ou le code est executer
+                let i = 0;
+                element.addEventListener('transitionend', function () {
+                    if (i === 0) {
+
+                        if (document.querySelector('.transition3') === null) {
+                            return;
+                        }
+                        document.querySelector('.transition3').style.display = 'none';
+                    }
+                });
+            }, 0.01)
+            i++;
+        }
+    })
 }
