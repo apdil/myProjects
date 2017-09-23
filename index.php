@@ -20,8 +20,9 @@ $dossiers = scandir('projects');
 </head>
 
 <body>
-    <div id='animationOnClick' class='fixed'>
-        <h2 id='titleAnim'></h2>
+    <div id="aaa" class='sectionClone'></div>
+    <div id='animationOnClick' class='transitionRibbon'>
+        <i><h2 id='titleAnim' class='titleTransition'></h2></i>
     </div>
     <!-- display link projects with ancre -->
     <nav id='linkBar' class='absolute'>

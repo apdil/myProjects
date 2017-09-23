@@ -2,22 +2,33 @@ let ancre = document.querySelectorAll('.ancre');
 
 
 ancre.forEach(function (link, item) {
+
+    link.addEventListener('mousedown', function () {
+        // create clone of active section
+        let sectionDouble = sectionActive(window.location.href);
+        let sectionMooved = sectionDouble.cloneNode(true);
+        // declar new id to avoid err in firefox
+        sectionMooved.id = 'sectionMooved';
+        // initialize new transition
+        sectionMooved.classList.add('sectionClone');
+        document.querySelector('main').appendChild(sectionMooved);
+    })
+
     link.addEventListener('click', function (e) {
 
         //TRANSLATE SECTION ON TOP AFTER CLICK ON LINK
+        let sectionMooved = document.querySelector('#sectionMooved');
 
-        //return element section Active
-        let section = sectionActive(window.location.href);
-        //create clone element for transition
-        let animSection = section.cloneNode(true);
-        document.body.querySelector('main').appendChild(animSection);
-        //initialize a class of new section who used for transition
-        animSection.classList.add('sectionClone');
-
-        //activation transition
-        setTimeout(function () {
-            sectionActiveTransition(animSection);
-        }, 0.01)
+        // transition debut
+        sectionMooved.classList.add('sectionTransition')
+        let i = 0
+        sectionMooved.addEventListener('transitionend', function () {
+            if (i === 0) {
+                i++;
+                // delete clone after transition
+                document.querySelector('main').removeChild(sectionMooved);
+            }
+        })
 
 
 
@@ -28,19 +39,16 @@ ancre.forEach(function (link, item) {
         // get name of project in link property
         titleAnim.textContent = link.innerHTML
         //initialize a class for title
-        titleAnim.classList = 'titleTransition';
         setTimeout(function () {
             titleTransition(titleAnim);
         }, 0.01)
 
 
-        
+
         // RIBBON TRANSITION WITH 3 STEP (3 TANSITION)
 
         let ribbon = document.querySelector('#animationOnClick');
 
-        //initialize a class for ribbon
-        ribbon.classList = 'transition fixed';
         ribbon.style.display = 'block';
 
         setTimeout(function () {
@@ -52,7 +60,7 @@ ancre.forEach(function (link, item) {
 
 function sectionActive(url) {
     for (let ancre of tabAncre) {
-        if (url === 'http://localhost/portFolio/myProjects/index.php' + ancre) {
+        if (url === 'http://localhost/portFolio/b/myProjects/index.php' + ancre) {
             return document.querySelector(ancre);
         }
     }
@@ -60,62 +68,78 @@ function sectionActive(url) {
 
 function ancreActive(url) {
     for (let ancre of tabAncre) {
-        if (url === 'http://localhost/portFolio/myProjects/index.php' + ancre) {
+        if (url === 'http://localhost/portFolio/b/myProjects/index.php' + ancre) {
             return ancre;
         }
     }
 }
 
 function sectionActiveTransition(element) {
+    let i = 0;
+
     element.classList.add('sectionTransition');
     element.addEventListener('transitionend', function () {
         //delete section after transition
-        document.body.querySelector('main').removeChild(element);
+        if (i === 0) {
+            i++;
+            if (document.querySelector('.sectionTransition') === null) {
+                return;
+            }
+            document.querySelector('main').removeChild(element);
+            console.log(element)
+        }
     });
 }
 
 function titleTransition(element) {
-    element.classList = 'titleTransition2';
     let i = 0;
+    element.classList.add('titleTransition2');
     element.addEventListener('transitionend', function () {
         // condition for run transitionend only one time
         if (i === 0) {
+            i++;
             if (document.querySelector('.titleTransition2') === null) {
                 return;
             }
             // title disapears
-            element.innerHTML = "";
-            i++;
+            element.innerHTML = '';
+            element.classList.remove('titleTransition2');
         }
     })
 }
 
 function ribbonTransition(element, index) {
-    element.classList = 'transition2 fixed';
+    //transitionend do mor time instruction so for instruction do only one time
+    //i do condition
+    let i = 0;
+    let a = 0;
+
+    element.classList.add('transitionRibbon2');
     //set a backgroundColor to color of active section
     element.style.backgroundColor = 'rgb(' + tabColor[index].color1 + ','
         + tabColor[index].color2 + ',' + tabColor[index].color3 + ')';
 
     element.addEventListener('transitionend', function () {
-        let i = 0;
         // condition for run transitionend only one time
         if (i === 0) {
+            i++;
             setTimeout(function () {
-                element.classList = 'transition3 fixed';
-
-                // a revoir erreur sur le nombre de fois ou le code est executer
-                let i = 0;
+                element.classList.remove('transitionRibbon');
+                element.classList.add('transitionRibbon3');
                 element.addEventListener('transitionend', function () {
-                    if (i === 0) {
-
-                        if (document.querySelector('.transition3') === null) {
+                    if (a === 0) {
+                        a++;
+                        if (document.querySelector('.transitionRibbon3') === null) {
                             return;
                         }
-                        document.querySelector('.transition3').style.display = 'none';
+                        element.classList.remove('transitionRibbon2');
+                        element.classList.remove('transitionRibbon3');
+                        setTimeout(function () {
+                            element.classList = 'transitionRibbon';
+                        })
                     }
                 });
             }, 0.01)
-            i++;
         }
     })
 }
