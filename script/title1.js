@@ -12,6 +12,12 @@ title1.forEach(function(title){
     }
 });
 
+// return letter who be colored
+function chooseLetter (element){
+    let index = Math.round(element.textContent.length / 2);
+    let letter = element.textContent[index];
+}
+
 function letterColor(element, letterIndex, colorObj){
     element.innerHTML = element.innerHTML.replace(letterIndex,
          '<span style="color:' + 'rgb(' + colorObj.color1 +

@@ -20,7 +20,6 @@ $dossiers = scandir('projects');
 </head>
 
 <body>
-    <div id="aaa" class='sectionClone'></div>
     <div id='animationOnClick' class='transitionRibbon'>
         <i><h2 id='titleAnim' class='titleTransition'></h2></i>
     </div>
