@@ -6,12 +6,20 @@ ancre.forEach(function (link, item) {
     link.addEventListener('mousedown', function () {
         // create clone of active section
         let sectionDouble = sectionActive(window.location.href);
-        let sectionMooved = sectionDouble.cloneNode(true);
+        console.log(window.location.href)
+        console.log(sectionActive(window.location.href))
+        let sectionMooved = document.importNode(sectionDouble, true);
         // declar new id to avoid err in firefox
         sectionMooved.id = 'sectionMooved';
         // initialize new transition
         sectionMooved.classList.add('sectionClone');
         document.querySelector('main').appendChild(sectionMooved);
+
+
+        let main = document.querySelector('main')
+        main.classList.add('mainTransition');
+
+
     })
 
     link.addEventListener('click', function (e) {
@@ -31,14 +39,13 @@ ancre.forEach(function (link, item) {
         })
 
 
-
         // TITLE OF PROJECT ON TRANSITION
 
         let titleAnim = document.querySelector('#titleAnim');
 
         // get name of project in link property
-
         titleAnim.textContent = link.innerHTML
+
         // change color of one letter
         let index = Math.round(titleAnim.textContent.length / 2);
         let letter = titleAnim.textContent[index];
@@ -50,23 +57,59 @@ ancre.forEach(function (link, item) {
         }, 0.01)
 
 
-
-        // RIBBON TRANSITION WITH 3 STEP (3 TANSITION)
+        // RIBBON ANIMATION
 
         let ribbon = document.querySelector('#animationOnClick');
 
-        ribbon.style.display = 'block';
+        ribbonAnim(ribbon, item)
 
-        setTimeout(function () {
-            ribbonTransition(ribbon, item);
-        }, 0.01)
+
+        // H2 ANIMATION
+
+        let sectionClick = sectionActive(link.href);
+        let h2 = sectionClick.querySelector('h2');
+
+        h2.classList.add('animeH2')
+        h2.addEventListener('animationend', function () {
+            h2.classList.add('afterAnimeH2')
+            h2.classList.remove('animeH2')
+        })
+
+
+        // // IMG
+        // let img = sectionClick.querySelector('img');
+
+        // img.classList.add('imgTrans');
+        // setTimeout(function () {
+        //     img.classList.add('imgTrans2');
+        // })
+
+        // // IMG 2
+        // let img2 = sectionClick.querySelector('.rogned');
+        // img2.classList.add('imgRogned')
+        // setTimeout(function () {
+        //     img2.classList.add('imgRogned2');
+        // })
+
+
+        // UL
+        let ul = sectionClick.querySelector('.toolsProject');
+
+        ul.classList.add('animeUl');
+        ul.addEventListener('animationend', function () {
+            ul.classList.add('afterAnimeUl');
+            ul.classList.remove('animeUl');
+        })
 
     });
 });
 
 function sectionActive(url) {
+    if (url === 'http://localhost/portFolio/c/myProjects/index.php') {
+        return document.querySelector('#Meetup');
+    }
     for (let ancre of tabAncre) {
-        if (url === 'http://localhost/portFolio/b/myProjects/index.php' + ancre) {
+        if (url === 'http://localhost/portFolio/c/myProjects/index.php' + ancre) {
             return document.querySelector(ancre);
         }
     }
@@ -74,7 +117,7 @@ function sectionActive(url) {
 
 function ancreActive(url) {
     for (let ancre of tabAncre) {
-        if (url === 'http://localhost/portFolio/b/myProjects/index.php' + ancre) {
+        if (url === 'http://localhost/portFolio/c/myProjects/index.php' + ancre) {
             return ancre;
         }
     }
@@ -114,49 +157,24 @@ function titleTransition(element) {
     })
 }
 
-function ribbonTransition(element, index) {
-    //transitionend do mor time instruction so for instruction do only one time
-    //i do condition
-    let i = 0;
-    let a = 0;
+function ribbonAnim(element, index) {
 
-    element.classList.add('transitionRibbon2');
-    //set a backgroundColor to color of active section
+    element.classList = 'animeRibbon';
     element.style.backgroundColor = 'rgb(' + tabColor[index].color1 + ','
         + tabColor[index].color2 + ',' + tabColor[index].color3 + ')';
 
-    element.addEventListener('transitionend', function () {
-        // condition for run transitionend only one time
-        if (i === 0) {
-            i++;
-            setTimeout(function () {
-                element.classList.remove('transitionRibbon');
-                element.classList.add('transitionRibbon3');
-                element.addEventListener('transitionend', function () {
-                    if (a === 0) {
-                        a++;
-                        if (document.querySelector('.transitionRibbon3') === null) {
-                            return;
-                        }
-                        element.classList.remove('transitionRibbon2');
-                        element.classList.remove('transitionRibbon3');
-                        setTimeout(function () {
-                            element.classList = 'transitionRibbon';
-                        })
-                    }
-                });
-            }, 0.01)
-        }
+    element.addEventListener('animationend', function () {
+        element.classList.remove('animeRibbon');
     })
 }
 
 // color of letter
-function letterColor2(element, letterIndex, color){
+function letterColor2(element, letterIndex, color) {
     element.innerHTML = element.innerHTML.replace(letterIndex,
-         '<span style="color:' + color + '">'+ letterIndex +'</span>');
+        '<span style="color:' + color + '">' + letterIndex + '</span>');
 }
-        function letterColor(element, letterIndex, colorObj){
+function letterColor(element, letterIndex, colorObj) {
     element.innerHTML = element.innerHTML.replace(letterIndex,
-         '<span style="color:' + 'rgb(' + colorObj.color1 +
-     ',' + colorObj.color2 + ',' + colorObj.color3 + ')' + '">'+ letterIndex +'</span>');
+        '<span style="color:' + 'rgb(' + colorObj.color1 +
+        ',' + colorObj.color2 + ',' + colorObj.color3 + ')' + '">' + letterIndex + '</span>');
 }

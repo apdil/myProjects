@@ -42,8 +42,7 @@ $dossiers = scandir('projects');
     <header class='flex jsContentSA alignItemsC fixed'>
         <a href='https://www.linkedin.com/in/apdil-aydinalp-135881149/'><i class="fa fa-linkedin-square imgSize" aria-hidden="true"></i>
         <a href='https://github.com/apdil'><i class="fa fa-git-square imgSize" aria-hidden="true"></i></a>
-        <a href='#'><i class="fa fa-graduation-cap imgSize" aria-hidden="true"></i></a>
-        <a href='#'><i class="fa fa-id-card-o imgSize" aria-hidden="true"></i></a>
+        <a href='cv.html'><i class="fa fa-id-card-o imgSize" aria-hidden="true"></i></a>
         <a href='https://simplon.co/'><img id='simplonImg' src='img/logo-simplon.png'></a>
     </header> 
     <main>
@@ -55,7 +54,7 @@ $dossiers = scandir('projects');
                         $projectObj = json_decode(file_get_contents('projects/'. $dossier. '/' .$file)); 
                 ?>
 
-        <section id='<?php echo $projectObj->name; ?>' class='flex column jsContentSA'>
+        <section id='<?php echo $projectObj->name; ?>' class='flex column jsContentSA relative'>
             <nav class='relative'>
                 <h2 class='title1'><i><?php echo $projectObj->name; ?></i></h2>
                 <div class='txtProject absolute txtCenter'><p><?php echo $projectObj->txt; ?></p></div>   
@@ -63,7 +62,7 @@ $dossiers = scandir('projects');
             <div class='presentProject relative'>
                 <div class='bande flex alignItemsC absolute'>
                     <div class='toolsProject absolute'> <!-- display tools -->
-                        <ul>
+                        <ul class='tools'>
                             <?php foreach($projectObj->tools as $tool){ ?>
                             <li><?php echo $tool; ?></li>
                             <?php } ?>
@@ -75,6 +74,11 @@ $dossiers = scandir('projects');
                     <img class='image' src='projects/<?php echo $dossier ?>/img.png'>
                 </div>
             </div>
+            <!-- <div class='arrows'>
+                <a href='#'><i class="fa fa-arrow-circle-up arrow arrowTop" aria-hidden="true"></i></a>
+                </br>
+                <a href='#'><i class="fa fa-arrow-circle-o-down arrow arrowBot" aria-hidden="true"></i></a>
+            </div>  -->
         </section>        
                 
                 
@@ -82,10 +86,12 @@ $dossiers = scandir('projects');
     </main>
     <script src='script/model/Color.js'></script>
     <script src='script/tab.js'></script>
+    <!-- /* <script src='script/perspective.js'></script> */ -->
     <script src='script/title1.js'></script>
     <script src='script/ribbonColor.js'></script>
     <script src='script/scroll.js'></script>
     <script src='script/animClickLink.js'></script>
+    <!-- <script src='script/arrow.js'></script> -->
 </body>
 
 </html>

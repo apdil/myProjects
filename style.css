@@ -68,9 +68,8 @@ li{
 .bande{
     height: 45vh;
     width: 100%;
-    background-color: red;
-    opacity: 0.9;
-    z-index: 99;
+    opacity: 0.8;
+    z-index: 1;
 }
 
 .image{
@@ -97,7 +96,7 @@ li{
 } 
 
 .toolsProject{
-    left: 65%;
+    left: 70%;
     color: white;
 }
 
@@ -164,7 +163,7 @@ li{
 }
 
 .imgSize:before{
-    font-size: 3em;
+    font-size: 2.4em;
 }
 
 .fa-linkedin-square:before{
@@ -193,36 +192,13 @@ li{
     position: fixed;
 }
 
-.transitionRibbon{
-    top: 100%; 
-    height: 100vh;
-    width: 100%;
-    transition: 1s;
-    transition-timing-function: cubic-bezier(.42,1.08,.88,.99);  
-    z-index: 120;
-}
- 
-.transitionRibbon2{
-    top: 0%;
-    height: 100vh;
-    width: 100%;
-    z-index: 120; 
-    transition: 1s;
-    transition-timing-function: cubic-bezier(.33,1.14,.14,.99); 
-} 
-
-.transitionRibbon3{
-    top: 37%;
-    height: 45vh;
-}
-
 .sectionClone{
     top: 0%;
     height: 100vh;
     width: 100%;
     position: fixed;
     background-color: white;
-    transition: 0.7s;
+    transition: 0.5s;
     transition-timing-function: cubic-bezier(.42,1.08,.88,.99);
 }
  
@@ -238,34 +214,91 @@ li{
 
 .titleTransition{
     margin-top: 0em;
-    transition: 1s;
+    transition: 0.8s;
 }
 
 .titleTransition2{
     margin-top: 2em;
 }
 
-/* .titleTransition3{
-    margin-top: 4em;
-    margin-left: 10em;
-    transition: font-size 0.2s;
-} */
+.animeRibbon{
+    animation: animeRibbon 1.6s;
+    animation-timing-function: cubic-bezier(.42,1.08,.88,.99);
+    z-index: 130;
+}
 
-/* @keyframes present{
+.animeH2{
+    animation: animeh2 0.4s;
+    animation-delay: 1s;
+}
+
+.afterAnimeH2{
+    margin-left: 2em;
+}
+
+.animeUl{
+    animation: animeul 0.5s;
+    animation-delay: 1.6s;
+}
+
+.afterAnimeUl{
+    left: 70%;
+}
+
+.arrows{
+    position: absolute;
+    top: 72%;
+    left: 8%;
+    z-index: 2;
+}
+
+.arrow::before{
+    font-size: 5.4em;
+    color: grey;
+}
+
+@keyframes animeRibbon{
     0%{
-        top: 0%;
         height: 100vh;
         width: 100%;
-        background-color: red;
+        top: 100%;
     }
     30%{
         top: 0%;
         height: 100vh;
+        width: 100%;
+
+    }
+    60%{
+        top: 0%;
+        height: 100vh;
+        width: 100%;
+    }
+    70%{
+        height: 45vh;
+        top: 37%;
     }
     100%{
-        top:40%;
-        height: 40vh;
+        height: 45vh;
+        top: 37%;
         width: 100%;
-        background-color: blue;
     }
-}  */
+}
+
+@keyframes animeh2{
+    0%{
+        margin-left: 1em;
+    }
+    100%{
+        margin-left: 2em;
+    }
+}
+
+@keyframes animeul{
+    0%{
+        left: 60%;
+    }
+    100%{
+        left: 70%;
+    }
+}
